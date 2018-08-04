@@ -1,0 +1,48 @@
+.container {
+    width: 100%;
+}
+
+.progress-bar {
+    counter-reset: step;
+    li {
+        float: left;
+        width: 33.33%;
+        position: relative;
+        text-align: center;
+        list-style-type: none;
+        &:before {
+            width: 20px;
+            height: 20px;
+            display: block;
+            border-radius: 50%;
+            content: counter(step);
+            counter-increment: step;
+            margin: 0 auto 10px auto;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+        &:after {
+            top: 10px;
+            left: -50%;
+            content: '';
+            height: 1px;
+            width: 100%;
+            z-index: -1;
+            position: absolute;
+            background-color: #ddd;
+        }
+        &:first-child:after {
+            display: none;
+        }
+        &.active {
+            color: green;
+        }
+        &.active:before {
+            color: green;
+            border-color: green;
+        }
+        &.active + li:after {
+            background-color: green;
+        }
+    }
+}
